@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.As.A.Service", "Plex.As.A.Service.csproj", "{D5A6010E-0863-42CB-A8DB-5B1F94A0B617}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{20E1F1B6-B031-439B-B94D-F9E2EBF164D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plex.As.A.Service.Tests", "..\UnitTests\Plex.As.A.Service.Tests\Plex.As.A.Service.Tests.csproj", "{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +19,15 @@ Global
 		{D5A6010E-0863-42CB-A8DB-5B1F94A0B617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A6010E-0863-42CB-A8DB-5B1F94A0B617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5A6010E-0863-42CB-A8DB-5B1F94A0B617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47FB19F3-EA6F-4005-9CCA-1CC30C3F245A} = {20E1F1B6-B031-439B-B94D-F9E2EBF164D4}
 	EndGlobalSection
 EndGlobal
