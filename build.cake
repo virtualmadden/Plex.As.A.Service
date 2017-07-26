@@ -1,3 +1,5 @@
+#addin "Cake.Topshelf"
+
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -18,6 +20,7 @@ var solution = "./Plex.As.A.Service/Plex.As.A.Service.sln";
 //////////////////////////////////////////////////////////////////////
 
 Task("Clean")
+    .Description("Cleaning the build directory.")
     .Does(() =>
 {
     CleanDirectory(buildDir);
@@ -25,6 +28,7 @@ Task("Clean")
 
 Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean")
+    .Description("Restoring NuGet packages.")
     .Does(() =>
 {
     NuGetRestore(solution);
@@ -32,24 +36,24 @@ Task("Restore-NuGet-Packages")
 
 Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
+    .Description("Building the solution.")
     .Does(() =>
 {
     if(IsRunningOnWindows())
     {
       // Use MSBuild
-      MSBuild(solution, settings =>
-        settings.SetConfiguration(configuration));
+      MSBuild(solution, settings => settings.SetConfiguration(configuration));
     }
     else
     {
       // Use XBuild
-      XBuild(solution, settings =>
-        settings.SetConfiguration(configuration));
+      XBuild(solution, settings => settings.SetConfiguration(configuration));
     }
 });
 
 Task("Run-Unit-Tests")
     .IsDependentOn("Build")
+    .Description("Runs Unit tests.")
     .Does(() =>
 {
     NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
@@ -57,16 +61,52 @@ Task("Run-Unit-Tests")
         });
 });
 
+Task("Install")
+    .IsDependentOn("Run-Unit-Tests")
+    .Description("Installs the service.")
+    .Does(() =>
+{
+    InstallTopshelf("" + buildDir + "/Plex.As.A.Service.exe", new TopshelfSettings()
+    {
+        Autostart = true,
+        LocalSystem = true,
+        Delayed = true
+    });
+});
+
+Task("Start")
+    .IsDependentOn("Install")
+    .Description("Starts the Service.")
+    .Does(() =>
+{
+    StartTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+});
+
+Task("Stop")
+    .IsDependentOn("Start")
+    .Description("Stops the service.")
+    .Does(() =>
+{
+    StopTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+});
+
+Task("Uninstall")
+    .IsDependentOn("Stop")
+    .Description("Uninstalls the service.")
+    .Does(() =>
+{
+    UninstallTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+});
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Run-Unit-Tests");
+    .IsDependentOn("Uninstall");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 
 RunTarget(target);
-

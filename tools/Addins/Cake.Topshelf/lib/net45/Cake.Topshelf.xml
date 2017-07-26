@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cake.Topshelf</name>
+    </assembly>
+    <members>
+        <member name="T:Cake.Topshelf.TopshelfAliases">
+            <summary>
+            Topshelf aliases
+            </summary>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.InstallTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Installs a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to install.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.InstallTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.Topshelf.TopshelfSettings)">
+            <summary>
+            Installs a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to install.</param>
+            <param name="settings">The <see cref="T:Cake.Topshelf.TopshelfSettings"/> used to install the service.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.UninstallTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Uninstalls a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to uninstall.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.UninstallTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String)">
+            <summary>
+            Uninstalls a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to uninstall.</param>
+            <param name="instance">The instance name of the service to uninstall.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.UninstallTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Uninstalls a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to uninstall.</param>
+            <param name="instance">The instance name of the service to uninstall.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StartTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Starts a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to start.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StartTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String)">
+            <summary>
+            Starts a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to start.</param>
+            <param name="instance">The instance name of the service to start.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StartTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Starts a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to start.</param>
+            <param name="instance">The instance name of the service to start.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StopTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Stops a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to stop.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StopTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String)">
+            <summary>
+            Stops a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to stop.</param>
+            <param name="instance">The instance name of the service to stop.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfAliases.StopTopshelf(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Stops a Topshelf windows service
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the Topshelf executable to stop.</param>
+            <param name="instance">The instance name of the service to stop.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="T:Cake.Topshelf.TopshelfSettingsExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.Topshelf.TopshelfSettings" />.
+            </summary>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.WithArguments(Cake.Topshelf.TopshelfSettings,System.Action{Cake.Core.IO.ProcessArgumentBuilder})">
+            <summary>
+            Sets the arguments to use during installation
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="arguments">The arguments to append.</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetServiceName(Cake.Topshelf.TopshelfSettings,System.Int32)">
+            <summary>
+            Specifies the time in milliseconds to wait for the Topshelf executable
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="timeout">The time in milliseconds.</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetServiceName(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Specifies the service name returned by the getkeyname operation.
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="name">The name of the service</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetDisplayName(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Specifies a friendly name that can be used by user interface programs to identify the service.
+            </summary>
+            <param name="settings">The process settings.</param>
+            <param name="name">The friendly name of the service</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetDescription(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Specifies a description for the specified service. If no string is specified, the description of the service is not modified. There is no limit to the number of characters in the service description.
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="description">The description of the service</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.UseUsername(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Sets the credentials to use when connecting
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="username">The username to connect with.</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.UsePassword(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Sets the credentials to use when connecting
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="password">The password to connect with.</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetInstance(Cake.Topshelf.TopshelfSettings,System.String)">
+            <summary>
+            Sets the instance name if registering the service multiple times
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="name">The name of the instance</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetAutostart(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service should automatically start when windows loads
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="autostart">if the service should automatically start when windows loads</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetDisabled(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service should be set to disabled
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="disabled">if the service should be set to disabled</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.SetDelayed(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service should start automatically (delayed)
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="delayed">if the service should start delayed</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.UseLocalSystem(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service with run with the local system account
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="localSystem">Run with the local system account</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.UseLocalService(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service with run with the local service account
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="localService">Run with the local service account</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettingsExtensions.UseNetworkService(Cake.Topshelf.TopshelfSettings,System.Boolean)">
+            <summary>
+            Sets if the service with run with the network service account
+            </summary>
+            <param name="settings">The installation settings.</param>
+            <param name="networkService">Run with the network service account</param>
+            <returns>The same <see cref="T:Cake.Topshelf.TopshelfSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.Topshelf.TopshelfSettings">
+            <summary>
+            Topshelf installer settings
+            </summary>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Topshelf.TopshelfSettings" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Arguments">
+            <summary>
+            Sets the arguments to use during installation
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Timeout">
+            <summary>
+            Gets or sets the time in milliseconds to wait for the Topshelf executable to install
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Username">
+            <summary>
+            Gets or sets the username to run the service.
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Password">
+            <summary>
+            Gets or sets the password for the specified username.
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Instance">
+            <summary>
+            Gets or sets the instance name if registering the service multiple times
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Autostart">
+            <summary>
+            Gets or sets if the service should automatically start when windows loads
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Disabled">
+            <summary>
+            Gets or sets if the service should be set to disabled
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Delayed">
+            <summary>
+            Gets or sets if the service should start automatically (delayed)
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.LocalSystem">
+            <summary>
+            Gets or sets the service with run with the local system account
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.LocalService">
+            <summary>
+            Gets or sets the service with run with the local service account
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.NetworkService">
+            <summary>
+            Gets or sets the service with run with the network service account
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.ServiceName">
+            <summary>
+            Gets or sets the name that the service should use when installing
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.DisplayName">
+            <summary>
+            Gets or sets the display name the the service should use when installing
+            </summary>
+        </member>
+        <member name="P:Cake.Topshelf.TopshelfSettings.Description">
+            <summary>
+            Gets or sets the service description the service should use when installing
+            </summary>
+        </member>
+        <member name="T:Cake.Topshelf.ITopshelfManager">
+            <summary>
+            Provides a high level utility for managing Topshelf services
+            </summary>
+        </member>
+        <member name="M:Cake.Topshelf.ITopshelfManager.InstallService(Cake.Core.IO.FilePath,Cake.Topshelf.TopshelfSettings)">
+            <summary>
+            Installs a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to install.</param>
+            <param name="settings">The <see cref="T:Cake.Topshelf.TopshelfSettings"/> used to install the service.</param>
+        </member>
+        <member name="M:Cake.Topshelf.ITopshelfManager.UninstallService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Uninstalls a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to uninstall.</param>
+            <param name="instance">The instance name of the service to uninstall.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.ITopshelfManager.StartService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Starts a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to start.</param>
+            <param name="instance">The instance name of the service to start.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.ITopshelfManager.StopService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Stops a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to stop.</param>
+            <param name="instance">The instance name of the service to stop.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="T:Cake.Topshelf.TopshelfManager">
+            <summary>
+            Provides a high level utility for managing Topshelf services
+            </summary>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfManager.#ctor(Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Topshelf.TopshelfManager" /> class.
+            </summary>
+            <param name="environment">The environment.</param>
+            <param name="runner">The process runner.</param>
+            <param name="log">The log.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfManager.InstallService(Cake.Core.IO.FilePath,Cake.Topshelf.TopshelfSettings)">
+            <summary>
+            Installs a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to install.</param>
+            <param name="settings">The <see cref="T:Cake.Topshelf.TopshelfSettings"/> used to install the service.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfManager.UninstallService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Uninstalls a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to uninstall.</param>
+            <param name="instance">The instance name of the service to uninstall.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfManager.StartService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Starts a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to start.</param>
+            <param name="instance">The instance name of the service to start.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="M:Cake.Topshelf.TopshelfManager.StopService(Cake.Core.IO.FilePath,System.String,System.Int32)">
+            <summary>
+            Stops a Topshelf windows service
+            </summary>
+            <param name="filePath">The file path of the Topshelf executable to stop.</param>
+            <param name="instance">The instance name of the service to stop.</param>
+            <param name="timeout">The time in milliseconds to wait for the Topshelf executable.</param>
+        </member>
+        <member name="T:Cake.Topshelf.NamespaceDoc">
+            <summary>
+            This namespace contains Topshelf aliases and related members.
+            </summary>
+        </member>
+    </members>
+</doc>
