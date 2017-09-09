@@ -6,4 +6,8 @@
     <StartupObject>Plex.As.A.Service.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Topshelf" Version="4.0.3" />
+  </ItemGroup>
+
 </Project>
