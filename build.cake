@@ -12,8 +12,9 @@ var configuration = Argument("configuration", "Release");
 //////////////////////////////////////////////////////////////////////
 
 // Define directories.
-var buildDir = Directory("./Plex.As.A.Service/bin") + Directory(configuration);
-var solution = "./Plex.As.A.Service/Plex.As.A.Service.sln";
+var projDir = Directory("./Plex.As.A.Service/Plex.Service/bin/debug/net461");
+var testDir = Directory("./Plex.As.A.Service/Plex.Service.Common.Tests/bin/debug/net461");
+var solution = "./Plex.As.A.Service.sln";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -23,50 +24,41 @@ Task("Clean")
     .Description("Cleaning the build directory.")
     .Does(() =>
 {
-    CleanDirectory(buildDir);
+    CleanDirectory(projDir);
+    CleanDirectory(testDir);
 });
 
-Task("Restore-NuGet-Packages")
-    .IsDependentOn("Clean")
+Task("Restore")
     .Description("Restoring NuGet packages.")
     .Does(() =>
 {
-    NuGetRestore(solution);
+    DotNetCoreRestore(solution);
 });
 
 Task("Build")
-    .IsDependentOn("Restore-NuGet-Packages")
     .Description("Building the solution.")
     .Does(() =>
 {
-    if(IsRunningOnWindows())
-    {
-      // Use MSBuild
-      MSBuild(solution, settings => settings.SetConfiguration(configuration));
-    }
-    else
-    {
-      // Use XBuild
-      XBuild(solution, settings => settings.SetConfiguration(configuration));
-    }
+    DotNetCoreBuild(solution); //, buildSettings);
 });
 
-Task("Run-Unit-Tests")
-    .IsDependentOn("Build")
+Task("Test")
     .Description("Runs Unit tests.")
     .Does(() =>
 {
-    NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
-        NoResults = true
-        });
+    var unitTests = GetFiles("./Plex.As.A.Service/Plex.Service.Common.Tests/*.csproj");
+
+    foreach(var test in unitTests)
+    {
+        DotNetCoreTest(test.FullPath);
+    }
 });
 
 Task("Install")
-    .IsDependentOn("Run-Unit-Tests")
     .Description("Installs the service.")
     .Does(() =>
 {
-    InstallTopshelf("" + buildDir + "/Plex.As.A.Service.exe", new TopshelfSettings()
+    InstallTopshelf($"{projDir}/Plex.Service.exe", new TopshelfSettings()
     {
         Autostart = true,
         LocalSystem = true,
@@ -75,28 +67,27 @@ Task("Install")
 });
 
 Task("Start")
-    .IsDependentOn("Install")
     .Description("Starts the Service.")
     .Does(() =>
 {
-    StartTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+    StartTopshelf("" + projDir + "/Plex.Service.exe");
 });
 
 Task("Stop")
-    .IsDependentOn("Start")
     .Description("Stops the service.")
     .Does(() =>
 {
-    StopTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+    StopTopshelf("" + projDir + "/Plex.Service.exe");
 });
 
 Task("Uninstall")
-    .IsDependentOn("Stop")
     .Description("Uninstalls the service.")
     .Does(() =>
 {
-    UninstallTopshelf("" + buildDir + "/Plex.As.A.Service.exe");
+    UninstallTopshelf("" + projDir + "/Plex.Service.exe");
 });
+
+Task("")
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
